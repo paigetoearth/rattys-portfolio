@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>YRK ˚₊✩ Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Nunito:wght@400;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --sage: #BFCFBB;
+  --forest: #344C3D;
+  --deep: #1e2e24;
+  --mid: #4a6b57;
+  --muted: #7a9e87;
+  --pale: #d6e2d2;
+  --cream: #eef4ec;
+  --white: #f7fbf5;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--cream);
+  color:var(--forest);
+  font-family:'Quicksand',sans-serif;
+  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M2 2 L2 16 L6 12 L9 18 L11 17 L8 11 L13 11 Z' fill='%23344C3D' stroke='%23BFCFBB' stroke-width='1'/%3E%3C/svg%3E") 2 2, auto;
+}
+ 
+/* ══ STAR FIELD BG ══ */
+body::before{
+  content:'✦ ˚ · ✧ ˚ · ✦ ˚ ✧ · ˚ ✦ · ✧ ˚ · ✦ ˚ ✧';
+  position:fixed;top:0;left:0;right:0;
+  font-size:12px;color:var(--muted);opacity:0.3;
+  letter-spacing:18px;line-height:38px;
+  pointer-events:none;z-index:0;
+  word-break:break-all;
+}
+ 
+/* ══ TICKER ══ */
+.ticker{
+  background:var(--forest);
+  color:var(--sage);
+  font-family:'VT323',monospace;
+  font-size:15px;padding:5px 0;
+  overflow:hidden;white-space:nowrap;
+  position:sticky;top:0;z-index:200;
+  border-bottom:2px solid var(--mid);
+  letter-spacing:0.05em;
+}
+.ticker-inner{display:inline-block;animation:tick 30s linear infinite}
+@keyframes tick{from{transform:translateX(100vw)}to{transform:translateX(-100%)}}
+ 
+/* ══ TASKBAR ══ */
+.taskbar{
+  background:var(--pale);
+  border-bottom:2px solid var(--sage);
+  display:flex;align-items:center;
+  justify-content:space-between;
+  padding:6px 20px;
+  position:sticky;top:27px;z-index:199;
+  box-shadow:0 2px 0 var(--muted);
+}
+.taskbar-logo{
+  font-family:'VT323',monospace;
+  font-size:22px;color:var(--forest);
+  letter-spacing:0.1em;
+  display:flex;align-items:center;gap:8px;
+}
+.taskbar-logo .flower{font-size:16px}
+.taskbar-nav{display:flex;gap:3px}
+.tb-btn{
+  font-family:'VT323',monospace;font-size:16px;
+  background:var(--sage);color:var(--forest);
+  border:1.5px solid var(--mid);
+  border-bottom:2.5px solid var(--mid);
+  padding:3px 14px;cursor:pointer;
+  letter-spacing:0.05em;text-decoration:none;
+  transition:all 0.1s;
+  border-radius:3px 3px 0 0;
+}
+.tb-btn:hover,.tb-btn.active{
+  background:var(--forest);color:var(--sage);
+  border-color:var(--forest);
+}
+.taskbar-clock{
+  font-family:'VT323',monospace;font-size:16px;
+  color:var(--forest);
+  background:var(--white);
+  border:1.5px solid var(--mid);
+  padding:2px 10px;
+  letter-spacing:0.06em;
+}
+ 
+/* ══ WINDOW CHROME ══ */
+.win{
+  background:var(--white);
+  border:2px solid var(--mid);
+  border-radius:6px 6px 4px 4px;
+  box-shadow:3px 3px 0 var(--mid);
+  position:relative;
+  z-index:1;
+}
+.win-bar{
+  background:var(--forest);
+  color:var(--sage);
+  font-family:'VT323',monospace;
+  font-size:16px;
+  padding:5px 10px;
+  display:flex;align-items:center;
+  justify-content:space-between;
+  border-radius:4px 4px 0 0;
+  letter-spacing:0.06em;
+}
+.win-bar-title{display:flex;align-items:center;gap:6px}
+.win-bar-title .icon{font-size:13px}
+.win-controls{display:flex;gap:4px}
+.wc{
+  width:18px;height:18px;
+  background:var(--sage);
+  border:1.5px solid var(--mid);
+  border-radius:2px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;cursor:pointer;
+  font-family:'VT323',monospace;color:var(--forest);
+  font-weight:bold;
+}
+.wc:hover{background:var(--pale)}
+.win-body{padding:16px}
+ 
+/* ══ LAYOUT ZONES ══ */
+.page-section{
+  max-width:1080px;margin:0 auto;
+  padding:40px 24px;
+  position:relative;z-index:1;
+}
+ 
+/* ══ HERO ══ */
+.hero-layout{display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:start}
+.hero-name{
+  font-family:'VT323',monospace;
+  font-size:clamp(52px,7vw,88px);
+  color:var(--forest);
+  letter-spacing:0.04em;line-height:0.95;
+  margin-bottom:6px;
+}
+.hero-name .sparkle{color:var(--muted);font-size:0.6em}
+.hero-sub{
+  font-family:'VT323',monospace;font-size:18px;
+  color:var(--muted);letter-spacing:0.12em;
+  margin-bottom:16px;
+}
+.hero-bio{
+  font-size:14px;line-height:1.8;
+  color:var(--forest);opacity:0.8;
+  max-width:440px;margin-bottom:20px;
+}
+.pill-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+.pill{
+  font-family:'Quicksand',sans-serif;font-size:12px;font-weight:600;
+  background:var(--pale);color:var(--forest);
+  border:1.5px solid var(--sage);
+  border-radius:100px;padding:4px 14px;
+  letter-spacing:0.04em;
+}
+.pill.active{background:var(--forest);color:var(--sage);border-color:var(--forest)}
+.cta-btn{
+  display:inline-block;
+  font-family:'VT323',monospace;font-size:20px;
+  background:var(--forest);color:var(--sage);
+  border:2px solid var(--forest);
+  border-bottom:4px solid var(--deep);
+  padding:8px 26px;text-decoration:none;
+  letter-spacing:0.08em;border-radius:4px;
+  transition:all 0.1s;cursor:pointer;
+}
+.cta-btn:hover{background:var(--mid);border-bottom-width:2px;transform:translateY(2px)}
+ 
+/* ══ BATTERY WIDGET ══ */
+.battery-widget{
+  padding:18px;text-align:center;
+}
+.battery-label{
+  font-family:'VT323',monospace;font-size:14px;
+  color:var(--muted);letter-spacing:0.12em;
+  margin-bottom:10px;
+}
+.battery{
+  display:inline-block;
+  width:120px;height:52px;
+  background:var(--pale);
+  border:2.5px solid var(--forest);
+  border-radius:8px;
+  position:relative;margin-bottom:6px;
+  overflow:hidden;
+}
+.battery::after{
+  content:'';
+  position:absolute;right:-8px;top:50%;
+  transform:translateY(-50%);
+  width:7px;height:20px;
+  background:var(--forest);border-radius:0 3px 3px 0;
+}
+.battery-fill{
+  position:absolute;left:3px;top:3px;bottom:3px;
+  background:var(--forest);
+  border-radius:5px;
+  transition:width 0.6s ease;
+  display:flex;align-items:center;justify-content:flex-end;
+  padding-right:4px;
+}
+.battery-fill::after{
+  content:'✿';font-size:10px;color:var(--sage);
+}
+.batt-pct{
+  font-family:'VT323',monospace;font-size:15px;
+  color:var(--forest);letter-spacing:0.06em;
+}
+ 
+/* flower decorations inside battery */
+.battery-flowers{
+  display:flex;gap:4px;align-items:center;
+  margin-bottom:12px;justify-content:center;
+}
+.bf{
+  font-size:14px;opacity:0.6;
+}
+ 
+.status-win-body{display:flex;flex-direction:column;gap:8px}
+.status-row{
+  display:flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:600;color:var(--forest);
+  padding:5px 8px;
+  background:var(--pale);border:1px solid var(--sage);
+  border-radius:4px;
+}
+.s-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--muted);flex-shrink:0;
+}
+.s-dot.on{background:var(--forest);animation:blink 1.4s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+ 
+/* ══ POPUP DIALOGS ══ */
+.dialog{
+  background:var(--cream);
+  border:2px solid var(--mid);
+  border-radius:6px 6px 4px 4px;
+  box-shadow:3px 3px 0 var(--mid);
+  max-width:320px;
+}
+.dialog-bar{
+  background:var(--sage);
+  color:var(--forest);
+  font-family:'VT323',monospace;font-size:15px;
+  padding:4px 10px;
+  display:flex;justify-content:space-between;align-items:center;
+  border-radius:4px 4px 0 0;letter-spacing:0.05em;
+}
+.dialog-body{padding:14px 16px;font-size:13px;line-height:1.7;color:var(--forest)}
+.dialog-btns{display:flex;gap:8px;margin-top:12px}
+.d-btn{
+  font-family:'VT323',monospace;font-size:16px;
+  background:var(--forest);color:var(--sage);
+  border:1.5px solid var(--mid);
+  border-bottom:3px solid var(--deep);
+  padding:4px 18px;cursor:pointer;border-radius:3px;
+  letter-spacing:0.06em;
+  transition:all 0.1s;
+}
+.d-btn:hover{background:var(--mid);border-bottom-width:1.5px;transform:translateY(1.5px)}
+.d-btn.outline{background:var(--pale);color:var(--forest);border-color:var(--mid)}
+ 
+/* ══ WORK SECTION ══ */
+.work-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:18px;
+}
+.project-win{transition:transform 0.15s;cursor:pointer}
+.project-win:hover{transform:translateY(-3px)}
+.project-win:hover .win{box-shadow:5px 5px 0 var(--mid)}
+.proj-thumb{
+  height:130px;
+  background:var(--pale);
+  border-bottom:1.5px solid var(--sage);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;position:relative;
+}
+.proj-info{padding:12px 14px 14px}
+.proj-type{
+  font-size:10px;font-weight:700;
+  color:var(--muted);letter-spacing:0.16em;
+  text-transform:uppercase;margin-bottom:4px;
+}
+.proj-title{
+  font-size:14px;font-weight:700;
+  color:var(--forest);margin-bottom:6px;line-height:1.3;
+}
+.proj-desc{font-size:12px;color:var(--mid);line-height:1.6;margin-bottom:10px}
+.proj-tag-row{display:flex;gap:5px;flex-wrap:wrap}
+.proj-tag{
+  font-size:10px;font-weight:600;
+  background:var(--pale);color:var(--forest);
+  border:1px solid var(--sage);
+  border-radius:100px;padding:2px 9px;
+}
+ 
+/* ══ ABOUT ══ */
+.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.about-p{font-size:13px;line-height:1.9;color:var(--forest);opacity:0.85;margin-bottom:14px}
+.skill-win-body{display:flex;flex-direction:column;gap:0}
+.skill-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:9px 12px;border-bottom:1px solid var(--pale);
+  font-size:12px;font-weight:600;color:var(--forest);
+}
+.skill-row:last-child{border-bottom:none}
+.pips{display:flex;gap:3px}
+.pip{width:11px;height:11px;border-radius:50%;background:var(--pale);border:1.5px solid var(--sage)}
+.pip.on{background:var(--forest);border-color:var(--forest)}
+.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--sage);border:1.5px solid var(--mid);margin-top:18px;border-radius:4px;overflow:hidden}
+.stat{background:var(--white);padding:16px;text-align:center}
+.stat-n{
+  font-family:'VT323',monospace;font-size:38px;
+  color:var(--forest);line-height:1;display:block;
+}
+.stat-l{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:0.12em;margin-top:2px}
+ 
+/* ══ SERVICES ══ */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.svc-win{}
+.svc-body{padding:18px}
+.svc-icon{
+  font-size:28px;margin-bottom:10px;display:block;
+  line-height:1;
+}
+.svc-name{font-size:14px;font-weight:700;color:var(--forest);margin-bottom:6px}
+.svc-desc{font-size:12px;color:var(--mid);line-height:1.7;margin-bottom:12px}
+.svc-price{
+  font-family:'VT323',monospace;font-size:20px;
+  color:var(--forest);letter-spacing:0.04em;
+}
+.svc-price small{font-size:12px;font-family:'Quicksand',sans-serif;color:var(--muted)}
+ 
+/* ══ CONTACT ══ */
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.field-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:0.14em;display:block;margin-bottom:4px}
+.c-input{
+  width:100%;background:var(--white);
+  border:1.5px solid var(--sage);
+  color:var(--forest);
+  font-family:'Quicksand',sans-serif;font-size:13px;
+  padding:9px 12px;outline:none;resize:none;
+  border-radius:4px;
+  transition:border-color 0.15s;
+  margin-bottom:10px;
+}
+.c-input:focus{border-color:var(--forest)}
+.c-input::placeholder{color:var(--muted)}
+.send-btn{
+  font-family:'VT323',monospace;font-size:20px;
+  background:var(--forest);color:var(--sage);
+  border:2px solid var(--forest);
+  border-bottom:4px solid var(--deep);
+  padding:8px 28px;cursor:pointer;
+  border-radius:4px;letter-spacing:0.08em;
+  transition:all 0.1s;
+}
+.send-btn:hover{background:var(--mid);border-bottom-width:2px;transform:translateY(2px)}
+.contact-info{display:flex;flex-direction:column;gap:12px}
+.info-row{
+  background:var(--pale);border:1.5px solid var(--sage);
+  border-radius:4px;padding:12px 14px;
+}
+.info-l{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:0.14em;margin-bottom:3px}
+.info-v{font-family:'VT323',monospace;font-size:20px;color:var(--forest);letter-spacing:0.05em}
+.social-pills{display:flex;gap:7px;flex-wrap:wrap;margin-top:6px}
+.soc{
+  font-family:'VT323',monospace;font-size:15px;
+  background:var(--forest);color:var(--sage);
+  border:1.5px solid var(--mid);border-bottom:3px solid var(--deep);
+  padding:3px 14px;cursor:pointer;border-radius:3px;
+  text-decoration:none;letter-spacing:0.06em;
+  transition:all 0.1s;
+}
+.soc:hover{background:var(--mid);border-bottom-width:1.5px;transform:translateY(1.5px)}
+ 
+/* ══ DECO ELEMENTS ══ */
+.deco-flowers{
+  text-align:center;font-size:18px;
+  color:var(--muted);opacity:0.5;
+  letter-spacing:8px;margin:8px 0;
+}
+.section-header{
+  display:flex;align-items:center;gap:12px;margin-bottom:24px;
+}
+.section-tag{
+  font-family:'VT323',monospace;font-size:13px;
+  color:var(--muted);letter-spacing:0.2em;
+  display:flex;align-items:center;gap:6px;
+}
+.section-h{
+  font-family:'VT323',monospace;font-size:40px;
+  color:var(--forest);letter-spacing:0.04em;line-height:1;
+}
+ 
+/* ══ FLOATING DIALOG DECORATIONS ══ */
+.float-zone{position:relative;min-height:20px}
+.float-dialog{
+  display:inline-block;margin:6px;
+  vertical-align:top;
+}
+ 
+/* ══ FOOTER ══ */
+footer{
+  background:var(--forest);
+  border-top:3px solid var(--mid);
+  padding:18px 40px;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:8px;position:relative;z-index:1;
+}
+.foot-logo{font-family:'VT323',monospace;font-size:22px;color:var(--sage);letter-spacing:0.1em}
+.foot-copy{font-size:11px;color:var(--muted);letter-spacing:0.1em}
+.foot-flowers{font-size:14px;color:var(--sage);opacity:0.5;letter-spacing:5px}
+ 
+/* ══ RESPONSIVE ══ */
+@media(max-width:700px){
+  .hero-layout,.about-layout,.contact-layout{grid-template-columns:1fr}
+  .taskbar-nav{display:none}
+  footer{padding:16px}
+}
+</style>
+</head>
+<body>
+ 
+<!-- TICKER -->
+<div class="ticker">
+  <span class="ticker-inner">
+    &nbsp;&nbsp;✿ PORTFOLIO LOADING... ✿&nbsp;&nbsp; OPEN TO FREELANCE ✿&nbsp;&nbsp; DESIGN · WEB · PHOTO · ART ✿&nbsp;&nbsp; LAST UPDATED: 06.2025 ✿&nbsp;&nbsp; NICE TO MEET U ✿&nbsp;&nbsp; STAY HYDRATED ✿&nbsp;&nbsp; u r doing great ✿&nbsp;&nbsp; CLICK TO EXPLORE ✿&nbsp;&nbsp;
+  </span>
+</div>
+ 
+<!-- TASKBAR -->
+<div class="taskbar">
+  <div class="taskbar-logo">
+    <span class="flower">✿</span>
+    YRK.carrd.co
+  </div>
+  <div class="taskbar-nav">
+    <a href="#home" class="tb-btn active">home</a>
+    <a href="#work" class="tb-btn">work</a>
+    <a href="#about" class="tb-btn">about</a>
+    <a href="#services" class="tb-btn">services</a>
+    <a href="#contact" class="tb-btn">contact</a>
+  </div>
+  <div class="taskbar-clock" id="clock">00:00</div>
+</div>
+ 
+<!-- ══════════ HOME ══════════ -->
+<div id="home" class="page-section">
+  <div class="hero-layout">
+    <div>
+ 
+      <!-- floating welcome dialog -->
+      <div class="float-dialog">
+        <div class="dialog" style="margin-bottom:18px">
+          <div class="dialog-bar">
+            <span>✿ hello.exe</span>
+            <div style="display:flex;gap:3px">
+              <div class="wc">_</div>
+              <div class="wc">□</div>
+              <div class="wc">✕</div>
+            </div>
+          </div>
+          <div class="dialog-body">
+            welcome to my little corner of the internet ˚✧<br/>
+            <em style="color:var(--muted);font-size:12px">nice to meet u!</em>
+            <div class="dialog-btns">
+              <button class="d-btn" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">enter ✿</button>
+              <button class="d-btn outline">cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="hero-name">YRK<br/><span class="sparkle">✦</span>STUDIO</div>
+      <div class="hero-sub">✿ designer · developer · dreamer ✿</div>
+      <p class="hero-bio">Crafting digital and physical experiences since 2019. I work across branding, web, photography, and art — building things that feel human, warm, and a little magical.</p>
+      <div class="pill-row">
+        <span class="pill active">✿ open to work</span>
+        <span class="pill">figma</span>
+        <span class="pill">webflow</span>
+        <span class="pill">film</span>
+        <span class="pill">print</span>
+        <span class="pill">motion</span>
+      </div>
+      <a href="#work" class="cta-btn">view work ✿</a>
+    </div>
+ 
+    <!-- RIGHT SIDE WIDGETS -->
+    <div style="display:flex;flex-direction:column;gap:16px">
+ 
+      <!-- Battery widget -->
+      <div class="win">
+        <div class="win-bar">
+          <span class="win-bar-title"><span class="icon">✿</span> energy.exe</span>
+          <div class="win-controls"><div class="wc">_</div><div class="wc">□</div><div class="wc">✕</div></div>
+        </div>
+        <div class="win-body battery-widget">
+          <div class="battery-label">CREATIVE ENERGY</div>
+          <div class="battery-flowers">
+            <span class="bf">✿</span><span class="bf">✿</span><span class="bf">✿</span><span class="bf">✿</span>
+          </div>
+          <div class="battery">
+            <div class="battery-fill" style="width:82%"></div>
+          </div>
+          <div class="batt-pct" style="margin-top:5px">82% — fully charged ✧</div>
+        </div>
+      </div>
+ 
+      <!-- Status widget -->
+      <div class="win">
+        <div class="win-bar">
+          <span class="win-bar-title"><span class="icon">✦</span> status.exe</span>
+          <div class="win-controls"><div class="wc">_</div><div class="wc">□</div><div class="wc">✕</div></div>
+        </div>
+        <div class="win-body" style="padding:12px">
+          <div class="status-win-body">
+            <div class="status-row"><span class="s-dot on"></span>status: online ✿</div>
+            <div class="status-row"><span class="s-dot"></span>location: new york</div>
+            <div class="status-row"><span class="s-dot on"></span>freelance: open ✧</div>
+            <div class="status-row"><span class="s-dot"></span>timezone: est</div>
+            <div class="status-row"><span class="s-dot on"></span>mood: inspired ✦</div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Mini message dialog -->
+      <div class="dialog">
+        <div class="dialog-bar">
+          <span>✦ new message!</span>
+          <div class="wc">✕</div>
+        </div>
+        <div class="dialog-body" style="padding:10px 14px">
+          <div style="font-size:13px;color:var(--forest);margin-bottom:8px">
+            ˚✧ wanna collab?<br/>
+            <span style="color:var(--muted);font-size:11px">let's make something lovely together</span>
+          </div>
+          <button class="d-btn" style="font-size:14px;padding:3px 14px" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">open ✿</button>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════ WORK ══════════ -->
+<div id="work" class="page-section" style="border-top:1px dashed var(--sage)">
+  <div class="deco-flowers">✿ ✦ ✿ ✦ ✿</div>
+  <div class="section-header">
+    <div>
+      <div class="section-tag">✿ selected work_</div>
+      <div class="section-h">projects.exe</div>
+    </div>
+  </div>
+ 
+  <div class="work-grid">
+ 
+    <div class="project-win">
+      <div class="win">
+        <div class="win-bar">
+          <span class="win-bar-title"><span class="icon">✿</span> meridian_id.exe</span>
+          <div class="win-controls"><div class="wc">_</div><div class="wc">□</div><div class="wc">✕</div></div>
+        </div>
+        <div class="proj-thumb">
+          <svg width="200" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="120" fill="#eef4ec"/>
+            <text x="100" y="52" text-anchor="middle" font-family="VT323,monospace" font-size="34" fill="#344C3D">MERIDIAN</text>
+            <rect x="30" y="62" width="140" height="1.5" fill="#BFCFBB"/>
+            <text x="100" y="80" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#7a9e87">BRAND IDENTITY SYSTEM</text>
+            <text x="60" y="104" font-family="VT323,monospace" font-size="22" fill="#BFCFBB">✿</text>
+            <text x="90" y="104" font-family="VT323,monospace" font-size="22" fill="#BFCFBB">✦</text>
+            <text x="120" y="104" font-family="VT323,monospace" font-size="22" fill="#BFCFBB">✿</text>
+          </svg>
+        </div>
+        <div class="proj-info">
+          <div class="proj-type">branding · 2025</div>
+          <div class="proj-title">Meridian — Full identity system</div>
+          <div class="proj-desc">Complete brand identity for an architecture firm. Logo, type, spatial signage, and digital presence.</div>
+          <div class="proj-tag-row">
+            <span class="proj-tag">figma</span>
+            <span class="proj-tag">print</span>
+            <span class="proj-tag">identity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="project-win">
+      <div class="win">
+        <div class="win-bar">
+          <span class="win-bar-title"><span class="icon">✦</span> folio_editorial.exe</span>
+          <div class="win-controls"><div class="wc">_</div><div class="wc">□</div><div class="wc">✕</div></div>
+        </div>
+        <div class="proj-thumb">
+          <svg width="200" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="120" fill="#d6e2d2"/>
+            <rect x="20" y="12" width="60" height="90" fill="#BFCFBB" stroke="#7a9e87" stroke-width="1"/>
+            <rect x="90" y="24" width="60" height="78" fill="#BFCFBB" stroke="#7a9e87" stroke-width="1"/>
+            <rect x="24" y="20" width="52" height="22" fill="#344C3D"/>
+            <text x="50" y="36" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#BFCFBB">THE FOLIO</text>
+            <rect x="24" y="48" width="42" height="2" fill="#7a9e87" opacity="0.6"/>
+            <rect x="24" y="56" width="36" height="2" fill="#7a9e87" opacity="0.4"/>
+            <rect x="24" y="64" width="44" height="2" fill="#7a9e87" opacity="0.4"/>
+            <rect x="94" y="32" width="52" height="18" fill="#344C3D"/>
+            <text x="120" y="46" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#BFCFBB">ANNUAL RPT</text>
+            <text x="100" y="112" font-family="VT323,monospace" font-size="14" fill="#7a9e87">✿ 60pp · print-ready</text>
+          </svg>
+        </div>
+        <div class="proj-info">
+          <div class="proj-type">editorial · 2024</div>
+          <div class="proj-title">The Folio — Annual report</div>
+          <div class="proj-desc">60-page sustainability report, art direction through to print production.</div>
+          <div class="proj-tag-row">
+            <span class="proj-tag">indesign</span>
+            <span class="proj-tag">print</span>
+            <span class="proj-tag">editorial</span>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="project-win">
+      <div class="win">
+        <div class="win-bar">
+          <span class="win-bar-title"><span class="icon">✿</span> greenhouse_web.exe</span>
+          <div class="win-controls"><div class="wc">_</div><div class="wc">□</div><div class="wc">✕</div></div>
+        </div>
+        <div class="proj-thumb">
+          <svg width="200" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="120" fill="#eef4ec"/>
+            <rect x="14" y="10" width="172" height="100" rx="4" fill="#BFCFBB" stroke="#7a9e87" stroke-width="1.5"/>
+            <rect x="14" y="10" width="172" height="22" rx="4" fill="#344C3D"/>
+            <circle cx="26" cy="21" r="5" fill="#BFCFBB" opacity="0.5"/>
+            <circle cx="40" cy="21" r="5" fill="#7a9e87"/>
+            <rect x="24" y="46" width="152" height="2" fill="#7a9e87" opacity="0.5"/>
+            <rect x="24" y="60" width="110" height="2" fill="#7a9e87" opacity="0.4"/>
+            <rect x="24" y="74" width="130" height="2" fill="#7a9e87" opacity="0.4"/>
+            <rect x="24" y="88" width="60" height="16" rx="8" fill="#344C3D"/>
+            <text x="54" y="101" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#BFCFBB">ENTER ✿</text>
+          </svg>
+        </div>
+        <div class="proj-info">
+          <div class="proj-type">web design · 2024</div>
+          <div class="proj-title">Greenhouse — Landing page</div>
+          <div class="proj-desc">Digital-first landing page for an urban farming startup. Figma to Webflow.</div>
+          <div class="proj-tag-row">
+            <span class="proj-tag">figma</span>
+            <span class="proj-tag">webflow</span>
+            <span class="proj-tag">ui</span>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="project-win">
+      <div class="win">
+        <div class="win-bar">
+          <span class="win-bar-title"><span class="icon">✦</span> roots_pkg.exe</span>
+          <div class="win-controls"><div class="wc">_</div><div class="wc">□</div><div class="wc">✕</div></div>
+        </div>
+        <div class="proj-thumb">
+          <svg width="200" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="120" fill="#d6e2d2"/>
+            <rect x="22" y="10" width="56" height="96" fill="#BFCFBB" stroke="#7a9e87" stroke-width="1.5"/>
+            <rect x="88" y="22" width="56" height="84" fill="#BFCFBB" stroke="#7a9e87" stroke-width="1.5"/>
+            <rect x="28" y="18" width="44" height="26" fill="#344C3D"/>
+            <text x="50" y="36" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#BFCFBB">ROOTS</text>
+            <text x="50" y="84" text-anchor="middle" font-family="VT323,monospace" font-size="18" fill="#7a9e87">✿</text>
+            <rect x="94" y="30" width="44" height="26" fill="#344C3D"/>
+            <text x="116" y="48" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#BFCFBB">HERB CO.</text>
+            <text x="116" y="90" text-anchor="middle" font-family="VT323,monospace" font-size="16" fill="#7a9e87">✦</text>
+          </svg>
+        </div>
+        <div class="proj-info">
+          <div class="proj-type">packaging · 2024</div>
+          <div class="proj-title">Roots — Herb brand packaging</div>
+          <div class="proj-desc">Botanical packaging identity for a small-batch herb company. Label design through production.</div>
+          <div class="proj-tag-row">
+            <span class="proj-tag">illustrator</span>
+            <span class="proj-tag">print</span>
+            <span class="proj-tag">packaging</span>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="project-win">
+      <div class="win">
+        <div class="win-bar">
+          <span class="win-bar-title"><span class="icon">✿</span> solstice_photo.exe</span>
+          <div class="win-controls"><div class="wc">_</div><div class="wc">□</div><div class="wc">✕</div></div>
+        </div>
+        <div class="proj-thumb">
+          <svg width="200" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="120" fill="#eef4ec"/>
+            <rect x="14" y="14" width="80" height="92" fill="#BFCFBB" stroke="#7a9e87" stroke-width="1"/>
+            <rect x="106" y="28" width="80" height="64" fill="#BFCFBB" stroke="#7a9e87" stroke-width="1"/>
+            <circle cx="54" cy="60" r="22" fill="none" stroke="#344C3D" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <circle cx="54" cy="60" r="9" fill="#344C3D" opacity="0.4"/>
+            <text x="54" y="64" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#BFCFBB">✿</text>
+            <line x1="106" y1="60" x2="186" y2="60" stroke="#7a9e87" stroke-width="0.8"/>
+            <line x1="146" y1="28" x2="146" y2="92" stroke="#7a9e87" stroke-width="0.8"/>
+            <text x="126" y="50" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#7a9e87">35mm</text>
+          </svg>
+        </div>
+        <div class="proj-info">
+          <div class="proj-type">photography · 2025</div>
+          <div class="proj-title">Solstice — Editorial series</div>
+          <div class="proj-desc">35mm editorial photography series for a seasonal fashion lookbook. Shot and retouched.</div>
+          <div class="proj-tag-row">
+            <span class="proj-tag">35mm</span>
+            <span class="proj-tag">editorial</span>
+            <span class="proj-tag">retouching</span>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="project-win">
+      <div class="win">
+        <div class="win-bar">
+          <span class="win-bar-title"><span class="icon">✦</span> pulse_ui.exe</span>
+          <div class="win-controls"><div class="wc">_</div><div class="wc">□</div><div class="wc">✕</div></div>
+        </div>
+        <div class="proj-thumb">
+          <svg width="200" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="120" fill="#d6e2d2"/>
+            <rect x="14" y="10" width="172" height="86" fill="#BFCFBB" stroke="#7a9e87" stroke-width="1"/>
+            <rect x="14" y="10" width="172" height="16" fill="#344C3D"/>
+            <rect x="22" y="38" width="36" height="46" fill="#344C3D" opacity="0.8"/>
+            <rect x="66" y="48" width="36" height="36" fill="#344C3D" opacity="0.6"/>
+            <rect x="110" y="56" width="36" height="28" fill="#344C3D" opacity="0.5"/>
+            <rect x="154" y="62" width="22" height="22" fill="#344C3D" opacity="0.4"/>
+            <line x1="14" y1="84" x2="186" y2="84" stroke="#7a9e87" stroke-dasharray="3 3" stroke-width="0.5"/>
+            <text x="40" y="112" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#7a9e87">Q1</text>
+            <text x="84" y="112" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#7a9e87">Q2</text>
+            <text x="128" y="112" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#7a9e87">Q3</text>
+          </svg>
+        </div>
+        <div class="proj-info">
+          <div class="proj-type">data viz · 2025</div>
+          <div class="proj-title">Pulse — Analytics dashboard</div>
+          <div class="proj-desc">Full UI design for a fintech analytics dashboard. Data viz, component system, prototype.</div>
+          <div class="proj-tag-row">
+            <span class="proj-tag">figma</span>
+            <span class="proj-tag">ui/ux</span>
+            <span class="proj-tag">dataviz</span>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+</div>
+ 
+<!-- ══════════ ABOUT ══════════ -->
+<div id="about" class="page-section" style="border-top:1px dashed var(--sage)">
+  <div class="deco-flowers">✦ ✿ ✦ ✿ ✦</div>
+  <div class="section-header">
+    <div>
+      <div class="section-tag">✦ who am i_</div>
+      <div class="section-h">about.exe</div>
+    </div>
+  </div>
+ 
+  <!-- mini "who am i" dialog float -->
+  <div class="dialog" style="margin-bottom:24px;max-width:380px">
+    <div class="dialog-bar">
+      <span>✿ who.am.i?</span>
+      <div style="display:flex;gap:3px"><div class="wc">_</div><div class="wc">□</div><div class="wc">✕</div></div>
+    </div>
+    <div class="dialog-body">
+      <strong style="font-family:'VT323',monospace;font-size:18px;letter-spacing:0.05em">YRK STUDIO</strong> ✦ multidisciplinary creative<br/>
+      <span style="color:var(--muted);font-size:12px">new york · available for collabs ✿</span>
+      <div class="dialog-btns">
+        <button class="d-btn" style="font-size:14px">nice to meet u ✿</button>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="about-layout">
+    <div>
+      <p class="about-p">Hey — I'm a multidisciplinary creative based in New York. I've been working at the intersection of design, technology, and art since 2019, building brands and experiences for clients ranging from independent studios to global agencies.</p>
+      <p class="about-p">My practice spans visual identity, editorial design, web development, photography, and motion. I believe the best creative work comes from understanding people — what they need, what they feel, and what they remember.</p>
+      <p class="about-p">When I'm not designing I'm shooting 35mm film, hunting vintage type specimens, or building tiny web experiments. ✿</p>
+      <div class="stats-row">
+        <div class="stat"><span class="stat-n">6+</span><div class="stat-l">YRS EXP</div></div>
+        <div class="stat"><span class="stat-n">80+</span><div class="stat-l">PROJECTS</div></div>
+        <div class="stat"><span class="stat-n">30+</span><div class="stat-l">CLIENTS</div></div>
+        <div class="stat"><span class="stat-n">12</span><div class="stat-l">AWARDS</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="win">
+        <div class="win-bar">
+          <span class="win-bar-title"><span class="icon">✿</span> skills.exe</span>
+          <div class="win-controls"><div class="wc">_</div><div class="wc">□</div><div class="wc">✕</div></div>
+        </div>
+        <div class="win-body" style="padding:0">
+          <div class="skill-win-body">
+            <div class="skill-row"><span>brand identity</span><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div></div>
+            <div class="skill-row"><span>web design</span><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div></div>
+            <div class="skill-row"><span>photography</span><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div></div>
+            <div class="skill-row"><span>motion</span><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div></div>
+            <div class="skill-row"><span>editorial</span><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div></div>
+            <div class="skill-row"><span>development</span><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div></div>
+            <div class="skill-row"><span>art direction</span><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════ SERVICES ══════════ -->
+<div id="services" class="page-section" style="border-top:1px dashed var(--sage)">
+  <div class="deco-flowers">✿ ✦ ✿ ✦ ✿</div>
+  <div class="section-header">
+    <div>
+      <div class="section-tag">✿ what i offer_</div>
+      <div class="section-h">services.exe</div>
+    </div>
+  </div>
+ 
+  <div class="services-grid">
+    <div class="svc-win win">
+      <div class="win-bar"><span class="win-bar-title"><span class="icon">✿</span> identity.exe</span><div class="win-controls"><div class="wc">✕</div></div></div>
+      <div class="svc-body">
+        <span class="svc-icon">✿</span>
+        <div class="svc-name">Brand Identity</div>
+        <div class="svc-desc">Logo design, visual systems, brand guidelines, and asset libraries. Built to scale from day one.</div>
+        <div class="svc-price">from $1,200 <small>/ project</small></div>
+      </div>
+    </div>
+    <div class="svc-win win">
+      <div class="win-bar"><span class="win-bar-title"><span class="icon">✦</span> web.exe</span><div class="win-controls"><div class="wc">✕</div></div></div>
+      <div class="svc-body">
+        <span class="svc-icon">✦</span>
+        <div class="svc-name">Web Design</div>
+        <div class="svc-desc">Landing pages, portfolio sites, and marketing pages. Designed in Figma, built in Webflow or code.</div>
+        <div class="svc-price">from $1,800 <small>/ project</small></div>
+      </div>
+    </div>
+    <div class="svc-win win">
+      <div class="win-bar"><span class="win-bar-title"><span class="icon">✿</span> photo.exe</span><div class="win-controls"><div class="wc">✕</div></div></div>
+      <div class="svc-body">
+        <span class="svc-icon">✿</span>
+        <div class="svc-name">Photography</div>
+        <div class="svc-desc">Editorial, product, and portrait sessions. 35mm and digital. Full retouching and licensing included.</div>
+        <div class="svc-price">from $600 <small>/ day</small></div>
+      </div>
+    </div>
+    <div class="svc-win win">
+      <div class="win-bar"><span class="win-bar-title"><span class="icon">✦</span> editorial.exe</span><div class="win-controls"><div class="wc">✕</div></div></div>
+      <div class="svc-body">
+        <span class="svc-icon">✦</span>
+        <div class="svc-name">Editorial Design</div>
+        <div class="svc-desc">Reports, lookbooks, zines, and magazines. Layout, type, and production-ready print files.</div>
+        <div class="svc-price">from $900 <small>/ project</small></div>
+      </div>
+    </div>
+    <div class="svc-win win">
+      <div class="win-bar"><span class="win-bar-title"><span class="icon">✿</span> direction.exe</span><div class="win-controls"><div class="wc">✕</div></div></div>
+      <div class="svc-body">
+        <span class="svc-icon">✿</span>
+        <div class="svc-name">Creative Direction</div>
+        <div class="svc-desc">Full campaign and creative direction. Concepting through delivery across any medium or format.</div>
+        <div class="svc-price">from $2,400 <small>/ project</small></div>
+      </div>
+    </div>
+    <div class="svc-win win">
+      <div class="win-bar"><span class="win-bar-title"><span class="icon">✦</span> retainer.exe</span><div class="win-controls"><div class="wc">✕</div></div></div>
+      <div class="svc-body">
+        <span class="svc-icon">✦</span>
+        <div class="svc-name">Monthly Retainer</div>
+        <div class="svc-desc">Ongoing creative support for teams. Dedicated hours each month, no scope surprises.</div>
+        <div class="svc-price">from $800 <small>/ month</small></div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════ CONTACT ══════════ -->
+<div id="contact" class="page-section" style="border-top:1px dashed var(--sage)">
+  <div class="deco-flowers">✦ ✿ ✦ ✿ ✦</div>
+  <div class="section-header">
+    <div>
+      <div class="section-tag">✦ get in touch_</div>
+      <div class="section-h">contact.exe</div>
+    </div>
+  </div>
+ 
+  <!-- message dialog -->
+  <div class="dialog" style="margin-bottom:24px">
+    <div class="dialog-bar">
+      <span>✿ new message!</span>
+      <div style="display:flex;gap:3px"><div class="wc">_</div><div class="wc">□</div><div class="wc">✕</div></div>
+    </div>
+    <div class="dialog-body">
+      i'd love to hear from you ✦ let's make something lovely together ✿<br/>
+      <span style="color:var(--muted);font-size:12px">response within 24-48 hrs</span>
+    </div>
+  </div>
+ 
+  <div class="contact-layout">
+    <div class="win">
+      <div class="win-bar"><span class="win-bar-title"><span class="icon">✿</span> send_message.exe</span><div class="win-controls"><div class="wc">_</div><div class="wc">□</div><div class="wc">✕</div></div></div>
+      <div class="win-body" style="padding:18px">
+        <label class="field-label">your name ✿</label>
+        <input class="c-input" type="text" placeholder="enter your name..."/>
+        <label class="field-label">your email ✦</label>
+        <input class="c-input" type="email" placeholder="your@email.com"/>
+        <label class="field-label">project type</label>
+        <input class="c-input" type="text" placeholder="branding, web, photo..."/>
+        <label class="field-label">message ✿</label>
+        <textarea class="c-input" rows="4" placeholder="tell me about your project..."></textarea>
+        <button class="send-btn" onclick="alert('Message sent! ✿\n\n[Wire up to Formspree in your live site]')">send message ✿</button>
+      </div>
+    </div>
+    <div class="contact-info">
+      <div class="info-row"><div class="info-l">✿ EMAIL</div><div class="info-v">hello@yrk.studio</div></div>
+      <div class="info-row"><div class="info-l">✦ LOCATION</div><div class="info-v">new york, usa</div></div>
+      <div class="info-row"><div class="info-l">✿ AVAILABILITY</div><div class="info-v" style="color:var(--muted)">open — june 2025</div></div>
+      <div class="info-row">
+        <div class="info-l">✦ FIND ME</div>
+        <div class="social-pills">
+          <a class="soc" href="#">instagram</a>
+          <a class="soc" href="#">twitter</a>
+          <a class="soc" href="#">linkedin</a>
+          <a class="soc" href="#">dribbble</a>
+        </div>
+      </div>
+      <!-- thank you dialog -->
+      <div class="dialog">
+        <div class="dialog-bar"><span>✦ this is for you ✿</span><div class="wc">✕</div></div>
+        <div class="dialog-body">
+          thank you for visiting ✿<br/>
+          <span style="color:var(--muted);font-size:12px">just happy you're here ✦</span>
+          <div class="dialog-btns">
+            <button class="d-btn" style="font-size:14px">✿ :)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<div class="deco-flowers" style="padding:16px 0;position:relative;z-index:1">✿ ✦ ✿ ✦ ✿ ✦ ✿ ✦ ✿</div>
+ 
+<footer>
+  <div class="foot-logo">✿ YRK.CARRD.CO ✿</div>
+  <div class="foot-flowers">✦ ✿ ✦ ✿ ✦</div>
+  <div class="foot-copy">© 2025 YRK STUDIO · BUILT WITH LOVE.EXE ✿</div>
+</footer>
+ 
+<script>
+function updateClock(){
+  const now=new Date();
+  const h=String(now.getHours()).padStart(2,'0');
+  const m=String(now.getMinutes()).padStart(2,'0');
+  document.getElementById('clock').textContent=h+':'+m;
+}
+updateClock();setInterval(updateClock,30000);
+ 
+const sections=document.querySelectorAll('[id]');
+const tbBtns=document.querySelectorAll('.tb-btn');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id});
+  tbBtns.forEach(b=>{b.classList.toggle('active',b.getAttribute('href')==='#'+cur)});
+});
+ 
+document.querySelectorAll('.project-win').forEach(c=>{
+  c.addEventListener('click',()=>{
+    const t=c.querySelector('.proj-title').textContent;
+    alert('✿ '+t+'\n\n[Replace with your project link or lightbox]');
+  });
+});
+</script>
+</body>
+</html>
