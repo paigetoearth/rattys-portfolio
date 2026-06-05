@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ratty's ˚₊✩ Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --sage:#BFCFBB;--forest:#344C3D;--deep:#1e2e24;
+  --mid:#4a6b57;--muted:#7a9e87;--pale:#d6e2d2;
+  --cream:#eef4ec;--white:#f7fbf5;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--cream);color:var(--forest);
+  font-family:'Quicksand',sans-serif;
+  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M2 2 L2 16 L6 12 L9 18 L11 17 L8 11 L13 11 Z' fill='%23344C3D' stroke='%23BFCFBB' stroke-width='1'/%3E%3C/svg%3E") 2 2,auto;
+}
+
+/* ══ STAR BG ══ */
+body::before{
+  content:'✦ ˚ · ✧ ˚ · ✦ ˚ ✧ · ˚ ✦ · ✧ ˚ · ✦ ˚ ✧';
+  position:fixed;top:0;left:0;right:0;
+  font-size:12px;color:var(--muted);opacity:0.3;
+  letter-spacing:18px;line-height:38px;
+  pointer-events:none;z-index:0;word-break:break-all;
+}
+
+/* ══ TICKER ══ */
+.ticker{
+  background:var(--forest);color:var(--sage);
+  font-family:'VT323',monospace;font-size:15px;
+  padding:5px 0;overflow:hidden;white-space:nowrap;
+  position:sticky;top:0;z-index:200;
+  border-bottom:2px solid var(--mid);letter-spacing:0.05em;
+}
+.ticker-inner{display:inline-block;animation:tick 30s linear infinite}
+@keyframes tick{from{transform:translateX(100vw)}to{transform:translateX(-100%)}}
+
+/* ══ TASKBAR ══ */
+.taskbar{
+  background:var(--pale);border-bottom:2px solid var(--sage);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:6px 20px;position:sticky;top:27px;z-index:199;
+  box-shadow:0 2px 0 var(--muted);
+}
+.taskbar-logo{
+  font-family:'VT323',monospace;font-size:22px;color:var(--forest);
+  letter-spacing:0.1em;display:flex;align-items:center;gap:8px;
+  text-decoration:none;
+}
+.taskbar-logo .flower{font-size:16px}
+.taskbar-nav{display:flex;gap:3px}
+.tb-btn{
+  font-family:'VT323',monospace;font-size:16px;
+  background:var(--sage);color:var(--forest);
+  border:1.5px solid var(--mid);border-bottom:2.5px solid var(--mid);
+  padding:3px 14px;cursor:pointer;letter-spacing:0.05em;
+  text-decoration:none;transition:all 0.1s;border-radius:3px 3px 0 0;
+}
+.tb-btn:hover,.tb-btn.active{background:var(--forest);color:var(--sage);border-color:var(--forest)}
+.tb-home{background:var(--forest)!important;color:var(--sage)!important;border-color:var(--forest)!important}
+.tb-home:hover{background:var(--mid)!important}
+.taskbar-clock{
+  font-family:'VT323',monospace;font-size:16px;color:var(--forest);
+  background:var(--white);border:1.5px solid var(--mid);padding:2px 10px;
+}
+
+/* ══ BREADCRUMB ══ */
+.breadcrumb{
+  background:var(--white);border-bottom:1px solid var(--pale);
+  padding:5px 24px;display:flex;align-items:center;gap:8px;
+  font-family:'VT323',monospace;font-size:14px;
+  color:var(--muted);letter-spacing:0.06em;
+  position:relative;z-index:1;
+}
+.breadcrumb a{color:var(--mid);text-decoration:none}
+.breadcrumb a:hover{color:var(--forest);text-decoration:underline}
+.breadcrumb-sep{color:var(--sage);margin:0 2px}
+.breadcrumb-current{color:var(--forest)}
+
+/* ══ WINDOW CHROME ══ */
+.win{
+  background:var(--white);border:2px solid var(--mid);
+  border-radius:6px 6px 4px 4px;box-shadow:3px 3px 0 var(--mid);
+  position:relative;z-index:1;
+}
+.win-bar{
+  background:var(--forest);color:var(--sage);
+  font-family:'VT323',monospace;font-size:16px;
+  padding:5px 10px;display:flex;align-items:center;
+  justify-content:space-between;border-radius:4px 4px 0 0;letter-spacing:0.06em;
+}
+.win-bar-title{display:flex;align-items:center;gap:6px}
+.win-bar-title .icon{font-size:13px}
+.win-controls{display:flex;gap:4px}
+.wc{
+  width:18px;height:18px;background:var(--sage);border:1.5px solid var(--mid);
+  border-radius:2px;display:flex;align-items:center;justify-content:center;
+  font-size:11px;cursor:pointer;font-family:'VT323',monospace;color:var(--forest);
+}
+.wc:hover{background:var(--pale)}
+.win-body{padding:16px}
+
+/* ══ DIALOGS ══ */
+.dialog{
+  background:var(--cream);border:2px solid var(--mid);
+  border-radius:6px 6px 4px 4px;box-shadow:3px 3px 0 var(--mid);max-width:320px;
+}
+.dialog-bar{
+  background:var(--sage);color:var(--forest);
+  font-family:'VT323',monospace;font-size:15px;
+  padding:4px 10px;display:flex;justify-content:space-between;
+  align-items:center;border-radius:4px 4px 0 0;letter-spacing:0.05em;
+}
+.dialog-body{padding:12px 14px;font-size:13px;line-height:1.7;color:var(--forest)}
+.d-btn{
+  font-family:'VT323',monospace;font-size:16px;
+  background:var(--forest);color:var(--sage);
+  border:1.5px solid var(--mid);border-bottom:3px solid var(--deep);
+  padding:4px 16px;cursor:pointer;border-radius:3px;letter-spacing:0.06em;
+  transition:all 0.1s;margin-top:10px;display:inline-block;text-decoration:none;
+}
+.d-btn:hover{background:var(--mid);border-bottom-width:1.5px;transform:translateY(1.5px)}
+
+/* ══ LAYOUT ══ */
+.page-wrap{max-width:1080px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+
+/* ══ PAGE HEADER ══ */
+.page-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:28px;gap:16px;flex-wrap:wrap;
+}
+.page-eyebrow{font-family:'VT323',monospace;font-size:13px;color:var(--muted);letter-spacing:0.2em;margin-bottom:4px}
+.page-title{font-family:'VT323',monospace;font-size:52px;color:var(--forest);letter-spacing:0.04em;line-height:1}
+.page-count{
+  font-family:'VT323',monospace;font-size:16px;color:var(--muted);
+  background:var(--pale);border:1.5px solid var(--sage);
+  padding:4px 14px;border-radius:100px;align-self:flex-end;
+}
+
+/* ══ FILTER TABS ══ */
+.filter-win{margin-bottom:28px}
+.filter-body{padding:12px 14px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.filter-label{font-family:'VT323',monospace;font-size:14px;color:var(--muted);letter-spacing:0.1em;margin-right:6px}
+.f-tab{
+  font-family:'VT323',monospace;font-size:16px;
+  background:var(--pale);color:var(--forest);
+  border:1.5px solid var(--sage);border-bottom:3px solid var(--mid);
+  padding:4px 16px;cursor:pointer;border-radius:3px;letter-spacing:0.06em;transition:all 0.1s;
+}
+.f-tab:hover{background:var(--sage)}
+.f-tab.active{background:var(--forest);color:var(--sage);border-color:var(--forest);border-bottom-color:var(--deep)}
+
+/* ══ SEGMENTS ══ */
+.segment{margin-bottom:48px}
+.seg-header{
+  display:flex;align-items:center;gap:14px;margin-bottom:18px;
+  padding-bottom:10px;border-bottom:1.5px dashed var(--sage);
+}
+.seg-icon{font-size:22px;line-height:1}
+.seg-title{font-family:'VT323',monospace;font-size:32px;color:var(--forest);letter-spacing:0.06em;line-height:1}
+.seg-sub{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:0.14em;text-transform:uppercase;margin-top:2px}
+.seg-count{
+  font-family:'VT323',monospace;font-size:14px;color:var(--muted);margin-left:auto;
+  background:var(--pale);border:1px solid var(--sage);padding:2px 10px;border-radius:100px;
+}
+
+/* ══ FEATURED CARD ══ */
+.featured-card{margin-bottom:16px;cursor:pointer;transition:transform 0.15s}
+.featured-card:hover{transform:translateY(-2px)}
+.featured-card:hover .win{box-shadow:5px 5px 0 var(--mid)}
+.featured-layout{display:grid;grid-template-columns:280px 1fr;min-height:180px}
+.featured-thumb{
+  background:var(--pale);border-right:1.5px solid var(--sage);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.featured-info{padding:20px 22px;display:flex;flex-direction:column;justify-content:space-between}
+.featured-badge{
+  display:inline-block;font-family:'VT323',monospace;font-size:13px;
+  background:var(--forest);color:var(--sage);
+  padding:2px 12px;border-radius:100px;letter-spacing:0.08em;
+  margin-bottom:10px;align-self:flex-start;
+}
+.featured-title{font-size:18px;font-weight:700;color:var(--forest);margin-bottom:6px;line-height:1.3}
+.featured-desc{font-size:13px;color:var(--mid);line-height:1.7;margin-bottom:14px;flex:1}
+.featured-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tag-row{display:flex;gap:5px;flex-wrap:wrap}
+.proj-tag{
+  font-size:10px;font-weight:600;background:var(--pale);color:var(--forest);
+  border:1px solid var(--sage);border-radius:100px;padding:2px 9px;
+}
+.view-btn{
+  font-family:'VT323',monospace;font-size:16px;
+  background:var(--forest);color:var(--sage);
+  border:1.5px solid var(--mid);border-bottom:3px solid var(--deep);
+  padding:4px 16px;cursor:pointer;border-radius:3px;letter-spacing:0.06em;
+  transition:all 0.1s;flex-shrink:0;
+}
+.view-btn:hover{background:var(--mid);border-bottom-width:1.5px;transform:translateY(1.5px)}
+
+/* ══ PROJ GRID ══ */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.proj-card{cursor:pointer;transition:transform 0.15s}
+.proj-card:hover{transform:translateY(-3px)}
+.proj-card:hover .win{box-shadow:5px 5px 0 var(--mid)}
+.proj-thumb{
+  height:120px;background:var(--pale);border-bottom:1.5px solid var(--sage);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.proj-body{padding:12px 14px 14px}
+.proj-type{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:4px}
+.proj-title{font-size:13px;font-weight:700;color:var(--forest);margin-bottom:5px;line-height:1.3}
+.proj-desc{font-size:11px;color:var(--mid);line-height:1.6;margin-bottom:10px}
+
+/* ══ DECO ══ */
+.deco-flowers{text-align:center;font-size:18px;color:var(--muted);opacity:0.5;letter-spacing:8px;margin:8px 0}
+
+/* ══ MODAL ══ */
+.modal-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(30,46,36,0.7);z-index:500;
+  align-items:center;justify-content:center;padding:24px;
+}
+.modal-overlay.open{display:flex}
+.modal-win{
+  background:var(--white);border:2px solid var(--mid);
+  border-radius:6px 6px 4px 4px;box-shadow:6px 6px 0 var(--mid);
+  max-width:600px;width:100%;max-height:85vh;overflow-y:auto;
+}
+.modal-thumb{
+  height:200px;background:var(--pale);border-bottom:1.5px solid var(--sage);
+  display:flex;align-items:center;justify-content:center;
+}
+.modal-body{padding:22px 24px}
+.modal-type{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:6px}
+.modal-title{font-size:20px;font-weight:700;color:var(--forest);margin-bottom:10px;line-height:1.3}
+.modal-desc{font-size:13px;color:var(--mid);line-height:1.8;margin-bottom:16px}
+.modal-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.modal-footer{display:flex;gap:10px;align-items:center}
+.modal-year{font-family:'VT323',monospace;font-size:18px;color:var(--muted)}
+
+/* ══ HIDDEN ══ */
+.segment[data-cat].hidden{display:none}
+
+/* ══ FOOTER ══ */
+footer{
+  background:var(--forest);border-top:3px solid var(--mid);
+  padding:18px 40px;display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:8px;position:relative;z-index:1;
+}
+.foot-logo{font-family:'VT323',monospace;font-size:22px;color:var(--sage);letter-spacing:0.1em}
+.foot-copy{font-size:11px;color:var(--muted);letter-spacing:0.1em}
+.foot-flowers{font-size:14px;color:var(--sage);opacity:0.5;letter-spacing:5px}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:700px){
+  .taskbar-nav{display:none}
+  .hero-layout{grid-template-columns:1fr}
+  .featured-layout{grid-template-columns:1fr}
+  .featured-thumb{height:140px;border-right:none;border-bottom:1.5px solid var(--sage)}
+  footer{padding:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker">
+  <span class="ticker-inner">
+    &nbsp;&nbsp;✿ WORK GALLERY LOADING... ✿&nbsp;&nbsp; ILLUSTRATIONS · BRANDING · TATTOO DESIGNS · DIGITAL ART ✿&nbsp;&nbsp; OPEN FOR COMMISSIONS ✿&nbsp;&nbsp; LAST UPDATED: 06.2026 ✿&nbsp;&nbsp; CLICK A PROJECT TO PREVIEW ✿&nbsp;&nbsp; u r doing great ✿&nbsp;&nbsp;
+  </span>
+</div>
+
+<!-- TASKBAR — same as index.html -->
+<div class="taskbar">
+  <a class="taskbar-logo" href="index.html">
+    <span class="flower">✿</span> Ratty's Portfolio
+  </a>
+  <div class="taskbar-nav">
+    <a href="index.html" class="tb-btn tb-home">✿ ← home</a>
+    <a href="work.html" class="tb-btn active">work</a>
+    <a href="index.html#about" class="tb-btn">about</a>
+    <a href="index.html#services" class="tb-btn">services</a>
+    <a href="index.html#contact" class="tb-btn">contact</a>
+  </div>
+  <div class="taskbar-clock" id="clock">00:00</div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">✿ Ratty's Portfolio</a>
+  <span class="breadcrumb-sep">/</span>
+  <span class="breadcrumb-current">work</span>
+</div>
+
+<!-- ══════════ PORTFOLIO ══════════ -->
+<div class="page-wrap" id="portfolio-start">
+
+  <div class="page-header">
+    <div>
+      <div class="page-eyebrow">✿ selected work_</div>
+      <div class="page-title">portfolio.exe</div>
+    </div>
+    <span class="page-count" id="proj-count">✦ 10 projects</span>
+  </div>
+
+  <!-- FILTER -->
+  <div class="filter-win win">
+    <div class="win-bar">
+      <span class="win-bar-title"><span>✿</span> filter_by.exe</span>
+      <div class="win-controls"><div class="wc">_</div><div class="wc">□</div><div class="wc">✕</div></div>
+    </div>
+    <div class="filter-body">
+      <span class="filter-label">show:</span>
+      <button class="f-tab active" data-filter="all">✿ all work</button>
+      <button class="f-tab" data-filter="illustration">illustration</button>
+      <button class="f-tab" data-filter="branding">branding</button>
+      <button class="f-tab" data-filter="tattoo">tattoo design</button>
+      <button class="f-tab" data-filter="digital">digital art</button>
+      <button class="f-tab" data-filter="procreate">procreate</button>
+    </div>
+  </div>
+
+  <div class="deco-flowers">✿ ✦ ✿ ✦ ✿</div>
+
+  <!-- ══ ILLUSTRATION ══ -->
+  <div class="segment" data-cat="illustration" id="seg-illustration">
+    <div class="seg-header">
+      <span class="seg-icon">✿</span>
+      <div><div class="seg-title">Illustration</div><div class="seg-sub">pen, paper & procreate</div></div>
+      <span class="seg-count">3 pieces</span>
+    </div>
+    <div class="featured-card" data-modal="illus-featured">
+      <div class="win">
+        <div class="win-bar">
+          <span class="win-bar-title"><span>✿</span> featured_illus.exe</span>
+          <div class="win-controls"><div class="wc">_</div><div class="wc">□</div><div class="wc">✕</div></div>
+        </div>
+        <div class="featured-layout">
+          <div class="featured-thumb">
+            <svg width="220" height="180" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <rect width="220" height="180" fill="#d6e2d2"/>
+              <circle cx="110" cy="80" r="50" fill="none" stroke="#344C3D" stroke-width="2" stroke-dasharray="6 4"/>
+              <circle cx="110" cy="80" r="30" fill="#BFCFBB" stroke="#344C3D" stroke-width="1.5"/>
+              <text x="110" y="86" text-anchor="middle" font-family="VT323,monospace" font-size="22" fill="#344C3D">✿</text>
+              <text x="60" y="50" font-family="VT323,monospace" font-size="16" fill="#7a9e87">✦</text>
+              <text x="150" y="40" font-family="VT323,monospace" font-size="20" fill="#7a9e87">✿</text>
+              <text x="40" y="110" font-family="VT323,monospace" font-size="14" fill="#BFCFBB">✧</text>
+              <text x="170" y="120" font-family="VT323,monospace" font-size="18" fill="#4a6b57">✦</text>
+              <rect x="60" y="148" width="100" height="1.5" fill="#4a6b57" opacity="0.4"/>
+              <text x="110" y="165" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#7a9e87">[ replace with your artwork ]</text>
+            </svg>
+          </div>
+          <div class="featured-info">
+            <div>
+              <span class="featured-badge">✿ featured</span>
+              <div class="featured-title">Add your best illustration here</div>
+              <div class="featured-desc">Replace this card with your standout illustration piece. Describe the medium, the story behind it, and what made it special. This wide card format is perfect for your hero artwork.</div>
+            </div>
+            <div class="featured-footer">
+              <div class="tag-row"><span class="proj-tag">pen & paper</span><span class="proj-tag">procreate</span><span class="proj-tag">2026</span></div>
+              <button class="view-btn">preview ✿</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card" data-modal="illus-1">
+        <div class="win">
+          <div class="win-bar"><span class="win-bar-title"><span>✿</span> illus_01.exe</span><div class="win-controls"><div class="wc">✕</div></div></div>
+          <div class="proj-thumb"><svg width="180" height="110" viewBox="0 0 180 110" xmlns="http://www.w3.org/2000/svg"><rect width="180" height="110" fill="#eef4ec"/><rect x="20" y="20" width="140" height="70" rx="4" fill="#BFCFBB" stroke="#7a9e87" stroke-width="1"/><text x="90" y="62" text-anchor="middle" font-family="VT323,monospace" font-size="16" fill="#344C3D">[ your art here ]</text><text x="90" y="80" text-anchor="middle" font-family="VT323,monospace" font-size="18" fill="#7a9e87">✿ ✦ ✿</text></svg></div>
+          <div class="proj-body">
+            <div class="proj-type">illustration · 2025</div>
+            <div class="proj-title">Illustration piece 01</div>
+            <div class="proj-desc">Add a short description of this piece — medium, inspiration, or story.</div>
+            <div class="tag-row"><span class="proj-tag">procreate</span><span class="proj-tag">digital</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-card" data-modal="illus-2">
+        <div class="win">
+          <div class="win-bar"><span class="win-bar-title"><span>✿</span> illus_02.exe</span><div class="win-controls"><div class="wc">✕</div></div></div>
+          <div class="proj-thumb"><svg width="180" height="110" viewBox="0 0 180 110" xmlns="http://www.w3.org/2000/svg"><rect width="180" height="110" fill="#d6e2d2"/><rect x="20" y="20" width="140" height="70" rx="4" fill="#BFCFBB" stroke="#7a9e87" stroke-width="1"/><text x="90" y="62" text-anchor="middle" font-family="VT323,monospace" font-size="16" fill="#344C3D">[ your art here ]</text><text x="90" y="80" text-anchor="middle" font-family="VT323,monospace" font-size="18" fill="#7a9e87">✦ ✿ ✦</text></svg></div>
+          <div class="proj-body">
+            <div class="proj-type">illustration · 2025</div>
+            <div class="proj-title">Illustration piece 02</div>
+            <div class="proj-desc">Add a short description of this piece — medium, inspiration, or story.</div>
+            <div class="tag-row"><span class="proj-tag">pen & paper</span><span class="proj-tag">ink</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ BRANDING ══ -->
+  <div class="segment" data-cat="branding" id="seg-branding">
+    <div class="seg-header">
+      <span class="seg-icon">✦</span>
+      <div><div class="seg-title">Branding</div><div class="seg-sub">logos, identity & visual systems</div></div>
+      <span class="seg-count">3 pieces</span>
+    </div>
+    <div class="featured-card" data-modal="brand-featured">
+      <div class="win">
+        <div class="win-bar"><span class="win-bar-title"><span>✦</span> featured_brand.exe</span><div class="win-controls"><div class="wc">_</div><div class="wc">□</div><div class="wc">✕</div></div></div>
+        <div class="featured-layout">
+          <div class="featured-thumb"><svg width="220" height="180" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg"><rect width="220" height="180" fill="#eef4ec"/><rect x="30" y="30" width="160" height="90" fill="none" stroke="#344C3D" stroke-width="1.5"/><text x="110" y="82" text-anchor="middle" font-family="VT323,monospace" font-size="28" fill="#344C3D">BRAND NAME</text><rect x="40" y="92" width="140" height="1.5" fill="#BFCFBB"/><text x="110" y="108" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#7a9e87">TAGLINE / IDENTITY</text><text x="110" y="155" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#7a9e87">[ replace with your branding work ]</text></svg></div>
+          <div class="featured-info">
+            <div>
+              <span class="featured-badge">✦ featured</span>
+              <div class="featured-title">Add your best branding project here</div>
+              <div class="featured-desc">Replace with your strongest brand identity work. Logos, color systems, type choices — describe what brief you were solving and how the final system came together.</div>
+            </div>
+            <div class="featured-footer">
+              <div class="tag-row"><span class="proj-tag">logo</span><span class="proj-tag">identity</span><span class="proj-tag">illustrator</span></div>
+              <button class="view-btn">preview ✦</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card" data-modal="brand-1">
+        <div class="win">
+          <div class="win-bar"><span class="win-bar-title"><span>✦</span> brand_01.exe</span><div class="win-controls"><div class="wc">✕</div></div></div>
+          <div class="proj-thumb"><svg width="180" height="110" viewBox="0 0 180 110" xmlns="http://www.w3.org/2000/svg"><rect width="180" height="110" fill="#eef4ec"/><rect x="20" y="20" width="140" height="70" fill="none" stroke="#4a6b57" stroke-width="1"/><text x="90" y="58" text-anchor="middle" font-family="VT323,monospace" font-size="22" fill="#344C3D">LOGO</text><rect x="40" y="66" width="100" height="1" fill="#BFCFBB"/><text x="90" y="80" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#7a9e87">[ your brand here ]</text></svg></div>
+          <div class="proj-body">
+            <div class="proj-type">branding · 2025</div>
+            <div class="proj-title">Branding project 01</div>
+            <div class="proj-desc">Describe the client, the brief, and the solution you designed.</div>
+            <div class="tag-row"><span class="proj-tag">logo</span><span class="proj-tag">canva</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-card" data-modal="brand-2">
+        <div class="win">
+          <div class="win-bar"><span class="win-bar-title"><span>✦</span> brand_02.exe</span><div class="win-controls"><div class="wc">✕</div></div></div>
+          <div class="proj-thumb"><svg width="180" height="110" viewBox="0 0 180 110" xmlns="http://www.w3.org/2000/svg"><rect width="180" height="110" fill="#d6e2d2"/><rect x="20" y="20" width="140" height="70" fill="none" stroke="#4a6b57" stroke-width="1"/><text x="90" y="58" text-anchor="middle" font-family="VT323,monospace" font-size="22" fill="#344C3D">LOGO</text><rect x="40" y="66" width="100" height="1" fill="#BFCFBB"/><text x="90" y="80" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#7a9e87">[ your brand here ]</text></svg></div>
+          <div class="proj-body">
+            <div class="proj-type">branding · 2026</div>
+            <div class="proj-title">Branding project 02</div>
+            <div class="proj-desc">Describe the client, the brief, and the solution you designed.</div>
+            <div class="tag-row"><span class="proj-tag">identity</span><span class="proj-tag">illustrator</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TATTOO ══ -->
+  <div class="segment" data-cat="tattoo" id="seg-tattoo">
+    <div class="seg-header">
+      <span class="seg-icon">✿</span>
+      <div><div class="seg-title">Tattoo Design</div><div class="seg-sub">flash sheets & custom commissions</div></div>
+      <span class="seg-count">2 pieces</span>
+    </div>
+    <div class="featured-card" data-modal="tattoo-featured">
+      <div class="win">
+        <div class="win-bar"><span class="win-bar-title"><span>✿</span> featured_tattoo.exe</span><div class="win-controls"><div class="wc">_</div><div class="wc">□</div><div class="wc">✕</div></div></div>
+        <div class="featured-layout">
+          <div class="featured-thumb"><svg width="220" height="180" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg"><rect width="220" height="180" fill="#d6e2d2"/><rect x="15" y="15" width="85" height="70" fill="none" stroke="#344C3D" stroke-width="1" stroke-dasharray="3 2"/><text x="57" y="56" text-anchor="middle" font-family="VT323,monospace" font-size="28" fill="#344C3D">✿</text><rect x="115" y="15" width="85" height="70" fill="none" stroke="#344C3D" stroke-width="1" stroke-dasharray="3 2"/><text x="157" y="56" text-anchor="middle" font-family="VT323,monospace" font-size="28" fill="#344C3D">✦</text><rect x="15" y="100" width="85" height="65" fill="none" stroke="#344C3D" stroke-width="1" stroke-dasharray="3 2"/><text x="57" y="138" text-anchor="middle" font-family="VT323,monospace" font-size="22" fill="#344C3D">˚✧</text><rect x="115" y="100" width="85" height="65" fill="none" stroke="#344C3D" stroke-width="1" stroke-dasharray="3 2"/><text x="157" y="138" text-anchor="middle" font-family="VT323,monospace" font-size="20" fill="#344C3D">⟡</text><text x="110" y="175" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#7a9e87">[ flash sheet — replace with yours ]</text></svg></div>
+          <div class="featured-info">
+            <div>
+              <span class="featured-badge">✿ featured</span>
+              <div class="featured-title">Flash sheet or featured tattoo design</div>
+              <div class="featured-desc">Replace with your best tattoo commission or flash sheet. Describe your style — fine line, illustrative, botanical — and whether you take custom requests.</div>
+            </div>
+            <div class="featured-footer">
+              <div class="tag-row"><span class="proj-tag">flash sheet</span><span class="proj-tag">pen & paper</span><span class="proj-tag">commissions open</span></div>
+              <button class="view-btn">preview ✿</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dialog" style="margin-bottom:18px">
+      <div class="dialog-bar"><span>✿ commissions.exe</span><div class="wc">✕</div></div>
+      <div class="dialog-body">
+        tattoo commissions are currently <strong>open ✿</strong><br/>
+        <span style="color:var(--muted);font-size:12px">DM on instagram or use the contact form ✦</span>
+        <div><a href="index.html#contact" class="d-btn" style="font-size:14px">get in touch ✿</a></div>
+      </div>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card" data-modal="tattoo-1">
+        <div class="win">
+          <div class="win-bar"><span class="win-bar-title"><span>✿</span> tattoo_01.exe</span><div class="win-controls"><div class="wc">✕</div></div></div>
+          <div class="proj-thumb"><svg width="180" height="110" viewBox="0 0 180 110" xmlns="http://www.w3.org/2000/svg"><rect width="180" height="110" fill="#eef4ec"/><rect x="20" y="15" width="140" height="80" fill="none" stroke="#344C3D" stroke-width="1" stroke-dasharray="4 3"/><text x="90" y="62" text-anchor="middle" font-family="VT323,monospace" font-size="32" fill="#344C3D">✿</text><text x="90" y="84" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#7a9e87">custom design</text></svg></div>
+          <div class="proj-body">
+            <div class="proj-type">tattoo · custom commission</div>
+            <div class="proj-title">Custom design 01</div>
+            <div class="proj-desc">Describe this piece — style, placement, what the client wanted.</div>
+            <div class="tag-row"><span class="proj-tag">custom</span><span class="proj-tag">fine line</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ DIGITAL ART ══ -->
+  <div class="segment" data-cat="digital" id="seg-digital">
+    <div class="seg-header">
+      <span class="seg-icon">✦</span>
+      <div><div class="seg-title">Digital Art</div><div class="seg-sub">procreate & adobe illustrator</div></div>
+      <span class="seg-count">2 pieces</span>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card" data-modal="dig-1">
+        <div class="win">
+          <div class="win-bar"><span class="win-bar-title"><span>✦</span> digital_01.exe</span><div class="win-controls"><div class="wc">✕</div></div></div>
+          <div class="proj-thumb"><svg width="180" height="110" viewBox="0 0 180 110" xmlns="http://www.w3.org/2000/svg"><rect width="180" height="110" fill="#eef4ec"/><rect x="14" y="10" width="152" height="90" rx="3" fill="#BFCFBB" stroke="#7a9e87" stroke-width="1"/><rect x="14" y="10" width="152" height="18" rx="3" fill="#344C3D"/><circle cx="24" cy="19" r="4" fill="#BFCFBB" opacity="0.5"/><circle cx="36" cy="19" r="4" fill="#7a9e87"/><text x="90" y="68" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#344C3D">[ digital piece ]</text><text x="90" y="86" text-anchor="middle" font-family="VT323,monospace" font-size="16" fill="#7a9e87">✦ ✿ ✦</text></svg></div>
+          <div class="proj-body">
+            <div class="proj-type">digital art · 2025</div>
+            <div class="proj-title">Digital piece 01</div>
+            <div class="proj-desc">Describe this digital artwork — tools used, concept, or mood.</div>
+            <div class="tag-row"><span class="proj-tag">procreate</span><span class="proj-tag">digital</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-card" data-modal="dig-2">
+        <div class="win">
+          <div class="win-bar"><span class="win-bar-title"><span>✦</span> digital_02.exe</span><div class="win-controls"><div class="wc">✕</div></div></div>
+          <div class="proj-thumb"><svg width="180" height="110" viewBox="0 0 180 110" xmlns="http://www.w3.org/2000/svg"><rect width="180" height="110" fill="#d6e2d2"/><rect x="14" y="10" width="152" height="90" rx="3" fill="#BFCFBB" stroke="#7a9e87" stroke-width="1"/><rect x="14" y="10" width="152" height="18" rx="3" fill="#344C3D"/><circle cx="24" cy="19" r="4" fill="#BFCFBB" opacity="0.5"/><circle cx="36" cy="19" r="4" fill="#7a9e87"/><text x="90" y="68" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#344C3D">[ digital piece ]</text><text x="90" y="86" text-anchor="middle" font-family="VT323,monospace" font-size="16" fill="#7a9e87">✿ ✦ ✿</text></svg></div>
+          <div class="proj-body">
+            <div class="proj-type">digital art · 2026</div>
+            <div class="proj-title">Digital piece 02</div>
+            <div class="proj-desc">Describe this digital artwork — tools used, concept, or mood.</div>
+            <div class="tag-row"><span class="proj-tag">illustrator</span><span class="proj-tag">vector</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM DIALOGS -->
+  <div class="deco-flowers">✦ ✿ ✦ ✿ ✦</div>
+  <div style="display:flex;gap:14px;flex-wrap:wrap;margin:24px 0 0">
+    <div class="dialog">
+      <div class="dialog-bar"><span>✿ commissions open!</span><div class="wc">✕</div></div>
+      <div class="dialog-body">
+        interested in working together? ✦<br/>
+        <span style="color:var(--muted);font-size:12px">dm or use the contact form ✿</span>
+        <div><a href="index.html#contact" class="d-btn" style="font-size:14px">contact me ✿</a></div>
+      </div>
+    </div>
+    <div class="dialog">
+      <div class="dialog-bar"><span>✦ more coming soon!</span><div class="wc">✕</div></div>
+      <div class="dialog-body">
+        always creating new things ✿<br/>
+        <span style="color:var(--muted);font-size:12px">follow for updates ✦</span>
+        <div><a href="#" class="d-btn" style="font-size:14px">instagram ✿</a></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-win win">
+    <div class="win-bar" id="modal-bar">
+      <span class="win-bar-title"><span>✿</span> <span id="modal-bar-title">project.exe</span></span>
+      <div class="win-controls"><div class="wc">_</div><div class="wc">□</div><div class="wc" id="modal-close">✕</div></div>
+    </div>
+    <div class="modal-thumb" id="modal-thumb"></div>
+    <div class="modal-body">
+      <div class="modal-type" id="modal-type"></div>
+      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div class="modal-footer">
+        <span class="modal-year" id="modal-year"></span>
+        <button class="view-btn" id="modal-link">open project ✿</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="deco-flowers" style="padding:16px 0;position:relative;z-index:1">✿ ✦ ✿ ✦ ✿ ✦ ✿ ✦ ✿</div>
+
+<footer>
+  <div class="foot-logo">✿ Ratty's Portfolio</div>
+  <div class="foot-flowers">✦ ✿ ✦ ✿ ✦</div>
+  <div class="foot-copy">© 2026 · BUILT WITH LOVE.EXE ✿</div>
+</footer>
+
+<script>
+function updateClock(){
+  const now=new Date();
+  document.getElementById('clock').textContent=
+    String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+}
+updateClock();setInterval(updateClock,30000);
+
+const tabs=document.querySelectorAll('.f-tab');
+const segments=document.querySelectorAll('.segment[data-cat]');
+tabs.forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    tabs.forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const f=tab.dataset.filter;
+    let count=0;
+    segments.forEach(seg=>{
+      const show=f==='all'||seg.dataset.cat===f||
+        (f==='procreate'&&(seg.dataset.cat==='illustration'||seg.dataset.cat==='digital'));
+      seg.classList.toggle('hidden',!show);
+      if(show) count+=seg.querySelectorAll('.proj-card,.featured-card').length;
+    });
+    document.getElementById('proj-count').textContent='✦ '+count+' projects';
+  });
+});
+
+const modalData={
+  'illus-featured':{type:'illustration · featured',title:'Add your best illustration here',desc:'Replace this card with your standout illustration piece. Click "open project" to link to a full-resolution image, Behance post, or Instagram.',tags:['pen & paper','procreate','2026'],year:'2026'},
+  'illus-1':{type:'illustration · 2025',title:'Illustration piece 01',desc:'Add your description here — medium, inspiration, and story behind the piece.',tags:['procreate','digital'],year:'2025'},
+  'illus-2':{type:'illustration · 2025',title:'Illustration piece 02',desc:'Add your description here — medium, inspiration, and story behind the piece.',tags:['pen & paper','ink'],year:'2025'},
+  'brand-featured':{type:'branding · featured',title:'Add your best branding project here',desc:'Replace with your strongest brand identity work.',tags:['logo','identity','illustrator'],year:'2025'},
+  'brand-1':{type:'branding · 2025',title:'Branding project 01',desc:'Describe the client, the brief, and the solution you designed.',tags:['logo','canva'],year:'2025'},
+  'brand-2':{type:'branding · 2026',title:'Branding project 02',desc:'Describe the client, the brief, and the solution you designed.',tags:['identity','illustrator'],year:'2026'},
+  'tattoo-featured':{type:'tattoo · flash sheet',title:'Flash sheet or featured tattoo design',desc:'Replace with your best tattoo commission or flash sheet.',tags:['flash sheet','pen & paper','commissions open'],year:'2026'},
+  'tattoo-1':{type:'tattoo · custom commission',title:'Custom design 01',desc:'Describe this piece — style, placement, what the client wanted.',tags:['custom','fine line'],year:'2025'},
+  'dig-1':{type:'digital art · 2025',title:'Digital piece 01',desc:'Describe this digital artwork — tools used, concept, or mood.',tags:['procreate','digital'],year:'2025'},
+  'dig-2':{type:'digital art · 2026',title:'Digital piece 02',desc:'Describe this digital artwork — tools used, concept, or mood.',tags:['illustrator','vector'],year:'2026'},
+};
+
+const modal=document.getElementById('modal');
+function openModal(id){
+  const d=modalData[id];if(!d)return;
+  document.getElementById('modal-bar-title').textContent=id+'.exe';
+  document.getElementById('modal-type').textContent=d.type;
+  document.getElementById('modal-title').textContent=d.title;
+  document.getElementById('modal-desc').textContent=d.desc;
+  document.getElementById('modal-year').textContent='✿ '+d.year;
+  document.getElementById('modal-tags').innerHTML=d.tags.map(t=>`<span class="proj-tag">${t}</span>`).join('');
+  document.getElementById('modal-thumb').innerHTML=`<svg width="300" height="190" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="190" fill="#d6e2d2"/><text x="150" y="88" text-anchor="middle" font-family="VT323,monospace" font-size="20" fill="#344C3D">[ add your image here ]</text><text x="150" y="114" text-anchor="middle" font-family="VT323,monospace" font-size="28" fill="#BFCFBB">✿ ✦ ✿</text><text x="150" y="140" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#7a9e87">link to full res / behance / instagram</text></svg>`;
+  modal.classList.add('open');
+}
+document.querySelectorAll('.proj-card,.featured-card').forEach(c=>{
+  c.addEventListener('click',()=>openModal(c.dataset.modal));
+});
+document.getElementById('modal-close').addEventListener('click',()=>modal.classList.remove('open'));
+modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
+document.getElementById('modal-link').addEventListener('click',()=>{
+  alert('✿ Replace this with your project URL — Behance, Instagram post, or a full-res image link!');
+});
+</script>
+</body>
+</html>
