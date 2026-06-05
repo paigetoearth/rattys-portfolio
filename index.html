@@ -278,6 +278,7 @@ body::before{
   gap:18px;
 }
 .project-win{transition:transform 0.15s;cursor:pointer}
+a:has(.project-win){display:block;text-decoration:none;color:inherit}
 .project-win:hover{transform:translateY(-3px)}
 .project-win:hover .win{box-shadow:5px 5px 0 var(--mid)}
 .proj-thumb{
@@ -567,7 +568,7 @@ footer{
  
   <div class="work-grid">
  
-    <div class="project-win">
+    <a href="work.html#seg-branding" style="text-decoration:none;display:block;color:inherit"><div class="project-win">
       <div class="win">
         <div class="win-bar">
           <span class="win-bar-title"><span class="icon">✿</span> meridian_id.exe</span>
@@ -595,9 +596,9 @@ footer{
           </div>
         </div>
       </div>
-    </div>
+    </div></a>
  
-    <div class="project-win">
+    <a href="work.html#seg-illustration" style="text-decoration:none;display:block;color:inherit"><div class="project-win">
       <div class="win">
         <div class="win-bar">
           <span class="win-bar-title"><span class="icon">✦</span> folio_editorial.exe</span>
@@ -629,9 +630,9 @@ footer{
           </div>
         </div>
       </div>
-    </div>
+    </div></a>
  
-    <div class="project-win">
+    <a href="work.html#seg-digital" style="text-decoration:none;display:block;color:inherit"><div class="project-win">
       <div class="win">
         <div class="win-bar">
           <span class="win-bar-title"><span class="icon">✿</span> greenhouse_web.exe</span>
@@ -662,9 +663,9 @@ footer{
           </div>
         </div>
       </div>
-    </div>
+    </div></a>
  
-    <div class="project-win">
+    <a href="work.html#seg-branding" style="text-decoration:none;display:block;color:inherit"><div class="project-win">
       <div class="win">
         <div class="win-bar">
           <span class="win-bar-title"><span class="icon">✦</span> roots_pkg.exe</span>
@@ -694,9 +695,9 @@ footer{
           </div>
         </div>
       </div>
-    </div>
+    </div></a>
  
-    <div class="project-win">
+    <a href="work.html#seg-illustration" style="text-decoration:none;display:block;color:inherit"><div class="project-win">
       <div class="win">
         <div class="win-bar">
           <span class="win-bar-title"><span class="icon">✿</span> solstice_photo.exe</span>
@@ -726,9 +727,9 @@ footer{
           </div>
         </div>
       </div>
-    </div>
+    </div></a>
  
-    <div class="project-win">
+    <a href="work.html#seg-digital" style="text-decoration:none;display:block;color:inherit"><div class="project-win">
       <div class="win">
         <div class="win-bar">
           <span class="win-bar-title"><span class="icon">✦</span> pulse_ui.exe</span>
@@ -760,7 +761,7 @@ footer{
           </div>
         </div>
       </div>
-    </div>
+    </div></a>
  
   </div>
 </div>
@@ -982,12 +983,7 @@ window.addEventListener('scroll',()=>{
   tbBtns.forEach(b=>{b.classList.toggle('active',b.getAttribute('href')==='#'+cur)});
 });
  
-document.querySelectorAll('.project-win').forEach(c=>{
-  c.addEventListener('click',()=>{
-    const t=c.querySelector('.proj-title').textContent;
-    alert('✿ '+t+'\n\n[Replace with your project link or lightbox]');
-  });
-});
+// project-win clicks handled by parent <a> links
 </script>
 </body>
 </html>
